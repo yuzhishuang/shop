@@ -8,7 +8,7 @@ class GoodsController extends Controller{
         if(IS_POST){
             //3、生成模型
             $model = D('Goods');
-            if($model->create())
+            if($model->create(I('post.'),1))
             {
                 //5、插入数据库
                 if($model->add())
