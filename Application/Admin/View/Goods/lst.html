@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+</head>
+<body>
+<!--搜索的表单-->
+<form>
+    <input type="hidden" name="p" value="1" />
+    商品名称：<input type="text" name="goods_name" value="<?php echo I('get.goods_name'); ?>" /><br/>
+    价格：<input type="text" name="start_price" value="<?php echo I('get.start_price'); ?>" />-<input type="text" name="end_price" value="<?php echo I('get.end_price'); ?>" /><br/>
+    是否上架：<input type="radio" name="is_on_sale" value="-1" <?php if(I('get.is_on_sale',-1) == -1) echo 'checked="checked"'; ?> />全部
+            <input type="radio" name="is_on_sale" value="1" <?php if(I('get.is_on_sale',-1) == 1) echo 'checked="checked"'; ?> />是
+            <input type="radio" name="is_on_sale" value="0" <?php if(I('get.is_on_sale',-1) == 0) echo 'checked="checked"'; ?> />否
+</form>
+</body>
+</html>

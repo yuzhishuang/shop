@@ -27,4 +27,17 @@ class GoodsController extends Controller{
         //1、显示表单
         $this->display();
     }
+    //列表
+    public function lst(){
+        $model = D('Goods');
+        //获取带翻页的数据
+        $data = $model->search();
+        $this->assign(
+            array(
+                'data' => $data['data'],
+                'page' => $data['page'],
+            )
+        );
+        $this->display();
+    }
 }

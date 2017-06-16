@@ -9,4 +9,8 @@ return array(
     'DB_PORT'   => 3306, // 端口
     'DB_PREFIX' => 'php34_', // 数据库表前缀
      'DB_CHARSET'=> 'utf8', // 字符集
+    /**************上传图片******************/
+    'IMG_maxSize' => '3M',
+    'IMG_exts' => array('jpg', 'gif', 'png', 'jpeg'),
+    'IMG_rootPath' => './Public/Uploads/',
 );
