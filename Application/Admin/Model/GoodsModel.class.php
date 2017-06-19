@@ -86,12 +86,13 @@ class GoodsModel extends Model{
                 $orderway = 'desc';
                 $orderby = 'price';
         }
+        echo $this->getlastsql();
 
         /*************************翻页**********************/
         //总的记录数
         $count = $this->where($where)->count();
         //生成翻页对象
-        $page = new \Think\Page($count,25);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $page = new \Think\Page($count,2);// 实例化分页类 传入总记录数和每页显示的记录数(25)
         $show = $page->show();// 分页显示输出
         $list = $this->where($where)->order("$orderby $orderway")->limit($page->firstRow.','.$page->listRows)->select();
         return array(

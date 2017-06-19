@@ -12,7 +12,38 @@
     价格：<input type="text" name="start_price" value="<?php echo I('get.start_price'); ?>" />-<input type="text" name="end_price" value="<?php echo I('get.end_price'); ?>" /><br/>
     是否上架：<input type="radio" name="is_on_sale" value="-1" <?php if(I('get.is_on_sale',-1) == -1) echo 'checked="checked"'; ?> />全部
             <input type="radio" name="is_on_sale" value="1" <?php if(I('get.is_on_sale',-1) == 1) echo 'checked="checked"'; ?> />是
-            <input type="radio" name="is_on_sale" value="0" <?php if(I('get.is_on_sale',-1) == 0) echo 'checked="checked"'; ?> />否
+            <input type="radio" name="is_on_sale" value="0" <?php if(I('get.is_on_sale',-1) == 0) echo 'checked="checked"'; ?> />否<br/>
+    是否删除：<input type="radio" name="is_delete" value="-1" <?php if(I('get.is_delete',-1) == -1) echo 'checked="checked"'; ?> />全部
+            <input type="radio" name="is_delete" value="1" <?php if(I('get.is_delete',-1) == 1) echo 'checked="checked"'; ?> />是
+            <input type="radio" name="is_delete" value="0" <?php if(I('get.is_delete',-1) == 0) echo 'checked="checked"'; ?> />否
+    <input type="submit" value="搜索" />
 </form>
+<table width="1024px" height="600px" border="1" cellspacing="0">
+    <tr>
+        <th>id</th>
+        <th>添加时间</th>
+        <th>商品名称</th>
+        <th>LOGO</th>
+        <th>价格</th>
+        <th>描述</th>
+        <th>是否上架</th>
+        <th>是否删除</th>
+        <th>操作</th>
+    </tr>
+    <volist name="data" id="dat">
+        <tr>
+            <td>{$dat.id}</td>
+            <td><?php echo date('Y-m-d H-i-s', $dat['addtime']) ?></td>
+            <td>{$dat.goods_name}</td>
+            <td><img src="/Public/Uploads/{$dat.logo}" width="20" height="20"/></td>
+            <td>{$dat.price}</td>
+            <td>{$dat.goods_desc}</td>
+            <td><?php echo $dat.is_on_sale == 1 ? '上架' : '下架' ?></td>
+            <td><?php echo $dat.is_on_sale == 1 ? '已删除' : '未删除' ?></td>
+            <td>编辑 删除</td>
+        </tr>
+    </volist>
+    <tr><td colspan="9">{$page}</td></tr>
+</table>
 </body>
 </html>
