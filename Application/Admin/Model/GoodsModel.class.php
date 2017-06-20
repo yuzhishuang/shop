@@ -72,6 +72,15 @@ class GoodsModel extends Model{
         $isDelete = I('get.is_delete',-1);
         if($isDelete != -1)
             $where['is_delete'] = array('eq',$isDelete);
+        //按时间搜索
+        $start_addtime = I('get.start_addtime');
+        $end_addtime = I('get.end_addtime');
+        if($start_addtime && $end_addtime)
+            $where['addtime'] = array('between',array($start_addtime,$end_addtime));
+        elseif($start_addtime)
+            $where['addtime'] = array('egt',$start_addtime);
+        elseif($end_addtime)
+            $where['addtime'] = array('elt',$end_addtime);
 
         /******************排序***********************/
         $orderby = 'id';  //默认排序字段
