@@ -73,8 +73,8 @@ class GoodsModel extends Model{
         if($isDelete != -1)
             $where['is_delete'] = array('eq',$isDelete);
         //按时间搜索
-        $start_addtime = I('get.start_addtime');
-        $end_addtime = I('get.end_addtime');
+        $start_addtime = strtotime(I('get.start_addtime'));
+        $end_addtime = strtotime(I('get.end_addtime'));
         if($start_addtime && $end_addtime)
             $where['addtime'] = array('between',array($start_addtime,$end_addtime));
         elseif($start_addtime)
@@ -95,7 +95,6 @@ class GoodsModel extends Model{
                 $orderway = 'desc';
                 $orderby = 'price';
         }
-        echo $this->getlastsql();
 
         /*************************翻页**********************/
         //总的记录数
