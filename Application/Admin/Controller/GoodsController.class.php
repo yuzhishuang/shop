@@ -40,4 +40,11 @@ class GoodsController extends Controller{
         );
         $this->display();
     }
+
+    public function delete(){
+        $model = D('Goods');
+        $model->delete(I('get.id'));
+        $this->success('操作成功',U('list?p='.I('get.p')));
+    }
+
 }
