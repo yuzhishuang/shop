@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>shop</title>
+    <link href="__PUBLIC__/datepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="__PUBLIC__/datepicker/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/datepicker/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/datepicker/datepicker_zh-cn.js"></script>
 </head>
 <body>
 <!--搜索的表单-->
@@ -10,6 +14,8 @@
     <input type="hidden" name="p" value="1" />
     商品名称：<input type="text" name="goods_name" value="<?php echo I('get.goods_name'); ?>" /><br/>
     价格：<input type="text" name="start_price" value="<?php echo I('get.start_price'); ?>" />-<input type="text" name="end_price" value="<?php echo I('get.end_price'); ?>" /><br/>
+    添加时间：<input type="text" size="8" id="start_addtime" name="start_addtime" value="<?php echo I('get.start_addtime') ?>" />-
+    <input type="text" size="8" id="end_addtime" name="end_addtime" value="<?php echo I('get.end_addtime') ?>" />
     是否上架：<input type="radio" name="is_on_sale" value="-1" <?php if(I('get.is_on_sale',-1) == -1) echo 'checked="checked"'; ?> />全部
             <input type="radio" name="is_on_sale" value="1" <?php if(I('get.is_on_sale',-1) == 1) echo 'checked="checked"'; ?> />是
             <input type="radio" name="is_on_sale" value="0" <?php if(I('get.is_on_sale',-1) == 0) echo 'checked="checked"'; ?> />否<br/>
@@ -51,3 +57,7 @@
 </table>
 </body>
 </html>
+<script>
+    $('#start_addtime').datepicker({dateFormat:"yy-mm-dd"});
+    $('#end_addtime').datepicker({dateFormat:"yy-mm-dd"});
+</script>
