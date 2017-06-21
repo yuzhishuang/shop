@@ -16,7 +16,11 @@
     是否删除：<input type="radio" name="is_delete" value="-1" <?php if(I('get.is_delete',-1) == -1) echo 'checked="checked"'; ?> />全部
             <input type="radio" name="is_delete" value="1" <?php if(I('get.is_delete',-1) == 1) echo 'checked="checked"'; ?> />是
             <input type="radio" name="is_delete" value="0" <?php if(I('get.is_delete',-1) == 0) echo 'checked="checked"'; ?> />否
-    <input type="submit" value="搜索" />
+    <input type="submit" value="搜索" /><br/>
+    排序方式：<input onclick="parentNode.submit();" type="radio" name="odby" value="id_asc" <?php if(I('get.odby','id_asc') == 'id_asc') echo 'checked="checked"' ?> />根据添加时间升序
+    <input onclick="parentNode.submit();" type="radio" name="odby" value="id_desc" <?php if(I('get.odby') == 'id_desc') echo 'checked="checked"' ?> />根据添加时间降序
+    <input onclick="parentNode.submit();" type="radio" name="odby" value="price_asc" <?php if(I('get.odby') == 'price_asc') echo 'checked="checked"' ?> />根据价格升序
+    <input onclick="parentNode.submit();" type="radio" name="odby" value="price_desc" <?php if(I('get.odby') == 'price_desc') echo 'checked="checked"' ?> />根据价格降序
 </form>
 <table width="1024px" height="600px" border="1" cellspacing="0">
     <tr>
