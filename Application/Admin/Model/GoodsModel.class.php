@@ -108,4 +108,16 @@ class GoodsModel extends Model{
             'data' => $list,
         );
     }
+
+    //在控制器中调用delete方法之前会自动调用
+    public function _before_delete($option)
+    {
+        //先根据商品的id取出这张图片的路径
+        $logo = $this->field(logo,sm_logo)->find($option['where']['id']);
+        //从配置文件中取出文件所在目录
+        $rp = C('IMG_rootPath');
+        //删除图片
+        unlink($rp . $logo['logo']);
+        unlink($rp . $logo['sm_logo']);
+    }
 }
