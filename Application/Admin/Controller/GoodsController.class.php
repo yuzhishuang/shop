@@ -44,7 +44,22 @@ class GoodsController extends Controller{
     public function delete(){
         $model = D('Goods');
         $model->delete(I('get.id'));
-        $this->success('操作成功',U('list?p='.I('get.p')));
+        $this->success('操作成功',U('lst?p='.I('get.p')));
     }
 
+    public function edit(){
+        //处理表单
+        if(IS_POST){
+            $model = D('Goods');
+            if($model->create(I('post.'),2)){
+                //save方法的返回值是影响记录条数（mysql_affected_rows）,如果修改时没有修改任何值会返回0，如果失败则返回false
+                if(FALSE != $model->save()){
+                    $this->success('操作成功!',U('lst?p='.I('get.p')));
+                    exit;
+                }
+            }
+            //如果失败则返回失败信息
+            $this->error($model->getError());
+        }
+    }
 }
