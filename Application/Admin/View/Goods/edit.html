@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+<form action="__SELF__" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo $info['id']; ?>" />
+    商品名称：<input type="text" name="goods_name" value="<?php echo $info['goods_name']; ?>" /><br>
+    商品价格：<input type="text" name="price" value="<?php echo $info['price']; ?>" /><br>
+    <img src="<?php echo C('IMG_rootPath') . $info['sm_logo']; ?>" />
+    商品logo：<input type="file" name="logo" /><br>
+    商品描述：<textarea name="goods_desc" id="goods_desc" value="<?php echo $info['goods_desc']; ?>"></textarea><br>
+    是否上架：<input type="radio" name="is_on_sale" value="1" <?php if($info['is_on_sale'] == 1) echo 'checked="checked"'; ?> />上架
+    <input type="radio" name="is_on_sale" value="0" <?php if($info['is_on_sale'] == 0) echo 'checked="checked"'; ?> />下架
+    <br>
+    <input type="submit" value="提交" />
+</form>
+</body>
+</html>
+<script>
+    UE.getEditor('goods_desc', {
+        "initialFrameWidth" : "100%",
+        "initialFrameHeight" : 350,
+        "maximumWords" : 15000,
+    });
+</script>

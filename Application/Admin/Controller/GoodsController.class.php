@@ -61,5 +61,12 @@ class GoodsController extends Controller{
             //如果失败则返回失败信息
             $this->error($model->getError());
         }
+        //接收商品的id
+        $id = I('get.id');
+        $model = M('Goods');
+        $info = $model->find($id);
+        $this->assign('info',$info);
+        //显示修改的表单
+        $this->display();
     }
 }

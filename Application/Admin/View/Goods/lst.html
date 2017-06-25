@@ -50,7 +50,7 @@
             <td>{$dat.goods_desc}</td>
             <td><?php echo $dat.is_on_sale == 1 ? '上架' : '下架' ?></td>
             <td><?php echo $dat.is_on_sale == 1 ? '已删除' : '未删除' ?></td>
-            <td>编辑<a href="<?php echo U('delete?&id='.$dat[id].'&p='.I('get.p',1)); ?>"> 删除</a> </td>
+            <td><a href="<?php echo U('edit?id='.$dat['id'].'$p='.I('get.p',1)); ?>">修改</a><a href="<?php echo U('delete?&id='.$dat[id].'&p='.I('get.p',1)); ?>"> 删除</a> </td>
         </tr>
     </volist>
     <tr><td colspan="9">{$page}</td></tr>
