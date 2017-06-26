@@ -101,6 +101,8 @@ class GoodsModel extends Model{
         $count = $this->where($where)->count();
         //生成翻页对象
         $page = new \Think\Page($count,2);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
         $show = $page->show();// 分页显示输出
         $list = $this->where($where)->order("$orderby $orderway")->limit($page->firstRow.','.$page->listRows)->select();
         return array(
@@ -144,8 +146,8 @@ class GoodsModel extends Model{
                 //生成缩略图
                 $image = new \Think\Image();
                 //打开要处理的图片
-                $image->open(C('IMG_rootPath') . $info['logo']['savepath'] .$info['logo']['savename']);
-                $image->thumb(150, 150)->save(C('IMG_rootPath') . $smLogoName);
+                $image->open($rootPath . $logoName);
+                $image->thumb(150, 150)->save($rootPath . $smLogoName);
                 //把图片信息放在表单中
                 $data['logo'] = $logoName;
                 $data['sm_logo'] = $smLogoName;
