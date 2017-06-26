@@ -15,4 +15,6 @@ return array(
     'IMG_rootPath' => './Public/Uploads/',
     /***************修改I底层函数过滤时使用的函数********/
     'DEFAULT_FILTER' => 'trim,removeXss',
+    /*************MD5时用来复杂化的*************/
+    'MD5_KEY' => 'fdsa#@90#_j132$0fdj!129',
 );
