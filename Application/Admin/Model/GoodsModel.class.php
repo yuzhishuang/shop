@@ -17,34 +17,16 @@ class GoodsModel extends Model{
         //获取当前时间
         $data['addtime'] = time();
         //上传logo
-        if($_FILES['logo']['error'] == 0){
-            $rootPath = C('IMG_rootPath');
-            $upload = new \Think\Upload(
-                array('rootPath' => $rootPath)
-            );// 实例化上传类
-            $upload->maxSize   =     (int)C('IMG_maxSize') * 1024 * 1024 ;// 设置附件上传大小
-            $upload->exts      =     C('IMG_exts');// 设置附件上传类型
-//            $upload->rootPath  =      C('IMG_rootPath'); // 设置附件上传根目录
-            $upload->savePath  =      'Goods/'; // 设置附件上传二级目录
-            // 上传文件
-            $info   =   $upload->upload();
-            if(!$info) {// 上传错误提示错误信息
-                //先把上传失败的错误信息存到模型中，由控制器最终在获得这个错误信息并显示
-                $this->error = $upload->getError();
-                RETURN FALSE; //返回控制器
-            }else{// 上传成功
-                $logoName = $info['logo']['savepath'] . $info['logo']['savename'];
-                //拼出缩略图的文件名
-                $smLogoName = $info['logo']['savepath'] . 'thumb_' . $info['logo']['savename'];
-                //生成缩略图
-                $image = new \Think\Image();
-                //打开要处理的图片
-                $image->open(C('IMG_rootPath') . $info['logo']['savepath'] .$info['logo']['savename']);
-                $image->thumb(150, 150)->save(C('IMG_rootPath') . $smLogoName);
-                //把图片信息放在表单中
-                $data['logo'] = $logoName;
-                $data['sm_logo'] = $smLogoName;
-            }
+       $ret = uploadOne('logo','Goods',array(
+           array(100,100)
+       ));
+        if($ret['ok'] == 1){
+            //图片路径放到数据库中
+            $data['logo'] = $ret['images'][0];
+            $data['sm_logo'] = $ret['images'][1];
+        }else{
+            $this->error = $ret['error'];
+            return false;
         }
     }
 
