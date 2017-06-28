@@ -79,3 +79,13 @@ function uploadOne($imgName, $dirName, $thumb = array())
         }
     }
 }
+//删除图片：参数：一维数组：所有要删除的图片的路径
+function deleteImage($images)
+{
+    //先取出图片所在目录
+    $rp = C('IMG_rootPath');
+    foreach ($images as $value) {
+        //@错误抵制符：忽略掉错误，一般在删除文件时都添上这个
+        @unlink($rp . $value);
+    }
+}
