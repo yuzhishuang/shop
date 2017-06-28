@@ -1,14 +1,14 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class AdminController extends Controller
+class LoginController extends Controller
 {
 	public function login()
 	{
 		if(IS_POST)
 		{
 			$model = D('Admin');
-			if($model->volidate($model->_login_validata)->create())
+			if($model->validate($model->_login_validate)->create())
 			{
 				if(true === $model->login())
 					redirect(U('Admin/Index/index')); //直接跳转

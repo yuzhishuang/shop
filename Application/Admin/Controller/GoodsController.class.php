@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class GoodsController extends Controller{
+class GoodsController extends IndexController{
     public function add(){
         //2、处理表单
         if(IS_POST){
