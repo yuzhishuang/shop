@@ -7,7 +7,7 @@ use Think\Model;
 class AdminModel extends Model
 {
 	//登录时表单验证的规则
-	public $_login_validata = array(
+	public $_login_validate = array(
 		array('username','require','用户名不能为空！',1),
 		array('password','require','密码不能为空！',1),
 		array('chkcode','require','验证码不能为空！',1),
@@ -39,7 +39,7 @@ class AdminModel extends Model
 					//把ID和用户名存到session中
 					session('id',$user['id']);
 					session('username',$user['username']);
-					return false;
+					return true;
 				}
 				else
 				{
