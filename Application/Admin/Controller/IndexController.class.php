@@ -23,4 +23,10 @@ class IndexController extends Controller
 	public function main(){
 		$this->display();
 	}
+	public function setPageBtn($title, $btnName, $btnLink)
+	{
+		$this->assign('_page_title', $title);
+		$this->assign('_page_btn_name', $btnName);
+		$this->assign('_page_btn_link', $btnLink);
+	}
 }

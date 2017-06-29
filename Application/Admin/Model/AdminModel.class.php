@@ -9,8 +9,8 @@ class AdminModel extends Model
 	public $_login_validate = array(
 		array('username', 'require', '用户名不能为空！', 1),
 		array('password', 'require', '密码不能为空！', 1),
-		array('chkcode', 'require', '验证码不能为空！', 1),
-		array('chkcode', 'chk_chkcode', '验证码不正确！', 1, 'callback'),
+//		array('chkcode', 'require', '验证码不能为空！', 1),
+//		array('chkcode', 'chk_chkcode', '验证码不正确！', 1, 'callback'),
 	);
 	// 添加修改管理员时用
 	protected $_validate = array(
